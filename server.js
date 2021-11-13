@@ -279,3 +279,72 @@ function addEmployee(){
         });
     });
 }
+
+function updateEmployee(){
+    connection.query(
+        "SELECT * FROM employee", function(err, results){
+            if (err) throw err;
+            inquirer.prompt([
+                {
+                    name: "choice",
+                    type: "list",
+                    choices: function(){
+                        let choiceArr = [];
+                        for(i=0; i < results.length; i++)
+                        {
+                            choiceArr.push(results[i].last_name);
+                        } 
+                        return choiceArr;
+                    },
+                    message: "Select an Employee to update"
+                }
+            ]).then(function(answer){
+                const saveName = answer.choice;
+
+                connection.query("SELECT * FROM employee", function(err, results){
+                    if(err, results){
+                        if(err) throw err;
+                        inquirer.prompt([
+                            {
+                                name: "role", 
+                                type: "list",
+                                choices: function(){
+                                    let choiceArr = [];
+                                    for(i=0; i< results.length; i++){
+                                        choiceArr.push(results[i].role_id);
+                                    }
+                                    return choiceArr;
+                                },
+                                message: "Select Title"
+                            },
+                            {
+                                name: "manager",
+                                type: "number",
+                                validate: function(value){
+                                    if(isNaN(value) === false){
+                                        return true;
+                                    }
+                                    return false;
+                                },
+                                message: "Enter new Manager ID", 
+                                default: "1"
+                            }
+                        ]).then(function(answer){
+                            console.log(answer);
+                            console.log(saveName);
+                            connection.query("UPDATE employee SET ? WHERE last_name = ?",
+                            [{
+                                role_id: answer.role,
+                                manager_id: answer.manager
+                            }, saveName
+                            ]
+                    ),
+                    console.log("Employee updated"),
+                    start();
+                });
+            }
+        })
+    })
+    }
+    )
+}
