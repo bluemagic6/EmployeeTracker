@@ -199,7 +199,7 @@ function addEmpolyeeRole(){
         {
             name: "department_id", 
             type: "number", 
-            message: "Enter Department ID"
+            message: "Enter Department ID",
             validate: function(value){
                 if(isNaN(value) === false){
                     return true;
