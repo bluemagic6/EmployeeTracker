@@ -155,3 +155,26 @@ function add(){
         }
     });
 }
+
+function addDepartment(){
+    inquirer.prompt([
+        {
+            name: "Department",
+            type: "input",
+            message: "What would you like to name the department?"
+        }
+    ]).then(function(answer){
+        connection.query(
+            "INSERT INTO department VALUES (DEFAULT, ?)",
+            [answer.department],
+            function(err){
+                if(err) throw err;
+                console.log("--------------------------------");
+                console.log("Departments updated with "+ answer.department);
+                console.log("--------------------------------");
+                start();
+            }
+        )
+    })
+}
+
