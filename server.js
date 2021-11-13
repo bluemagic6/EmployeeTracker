@@ -178,3 +178,50 @@ function addDepartment(){
     })
 }
 
+function addEmpolyeeRole(){
+    inquirer.prompt([
+        {
+            name:"role",
+            type: "input",
+            message: "Enter role:"
+        },
+        {
+            name: "salary", 
+            type: "number",
+            message: "Please Enter Salary",
+            validate: function(value){
+                if(isNaN(value) === false){
+                    return true;
+                }
+                return false
+            }
+        },
+        {
+            name: "department_id", 
+            type: "number", 
+            message: "Enter Department ID"
+            validate: function(value){
+                if(isNaN(value) === false){
+                    return true;
+                }
+                return false
+            }
+        }
+    ]).then(function(answer){
+        connection.query(
+            "INSERT INTO role SET ?", 
+            {
+                title: answer.role,
+                salary: answer.salary, 
+                department_id: answer.department_id
+            },
+            function(err){
+                if(err) throw err;
+                console.log("--------------------------------");
+                console.log("Employee Roles updated with "+ answer.role);
+                console.log("--------------------------------");
+                start();
+            }
+        )
+    })
+}
