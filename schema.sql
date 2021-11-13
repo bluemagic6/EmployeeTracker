@@ -25,18 +25,22 @@ CREATE TABLE employee(
     PRIMARY KEY (id)
 );
 
+USE tracker_db;
 
 INSERT INTO department(name)
-VALUES INTO ("Legal", "Engineering", "Sales", "Finance");
+VALUES ("Legal"), ("Engineering"), ("Sales"), ("Finance");
 
 INSERT INTO role(title, salary, department_id)
-VALUES ("Director", 250000, 1), 
-("Office Manager", 175000, 2), 
-("Deveolpment", 140000, 3), 
-("Intern", 60000, 4)
+VALUES 
+    ("Director", 250000, 1), 
+    ("Office Manager", 175000, 2), 
+    ("Deveolpment", 140000, 3), 
+    ("Intern", 60000, 4);
 
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
-VALUES ("Johnny", "Dickerson", "Director", 1), 
-("James", "Jones", "Office Manager", 2), 
-("Joe", "Thomas", "Devlopment", 3), 
-("Henry", "Mills", "Intern", 4);
+VALUES 
+    ("Johnny", "Dickerson", "Director", 1), 
+    ("James", "Jones", "Office Manager", 2), 
+    ("Joe", "Thomas", "Devlopment", 3), 
+    ("Henry", "Mills", "Intern", 4)
+;

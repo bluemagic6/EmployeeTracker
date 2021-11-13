@@ -32,7 +32,8 @@ function start(){
             choices: ["View", "Add", "Update", "Exit"]
         }
     ]).then(function(res){
-        switch(res.strat){
+        console.log(res)
+        switch(res.start){
             case "View": 
                 view();
                 break;
@@ -53,6 +54,7 @@ function start(){
     });
 }
 
+
 function view(){
     inquirer.prompt([
         {
@@ -62,7 +64,7 @@ function view(){
             choices: ["All Employees", "By Department", "By Role"]
         }
     ]).then(function(res){
-        switch(res.strat){
+        switch(res.start){
             case "All employees": 
                 viewAllEmployees();
                 break;
