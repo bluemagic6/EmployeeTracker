@@ -11,8 +11,8 @@ const connection = mysql.createConnection({
 
     // username
     user:"root",
-
-    db:"employee_db"
+    password: 'Kissazz1',
+    db:"tracker_db"
 });
 
 // connection tp mySql server
@@ -33,18 +33,22 @@ function start(){
         }
     ]).then(function(res){
         switch(res.strat){
-            case "View": view();
-            break;
-            case "Add": add();
-            break;
-            case "Update": updateEmployee();
-            break;
+            case "View": 
+                view();
+                break;
+            case "Add": 
+                add();
+                break;
+            case "Update": 
+                updateEmployee();
+                break;
             case "Exit":
                 console.log("--------------------------------");
                 console.log("All done");
                 console.log("--------------------------------");
                 break;
-                default: console.log("default");
+            default: 
+            console.log("default");
         }
     });
 }
@@ -59,13 +63,17 @@ function view(){
         }
     ]).then(function(res){
         switch(res.strat){
-            case "All employees": viewAllEmployees();
-            break;
-            case "By Department": viewByDepartment();
-            break;
-            case "By Role": viewByRole();
-            break;
-            default: console.log("default");
+            case "All employees": 
+                viewAllEmployees();
+                break;
+            case "By Department": 
+                viewByDepartment();
+                break;
+            case "By Role": 
+                viewByRole();
+                break;
+            default: 
+                console.log("default");
         }
     });
 }
@@ -146,12 +154,17 @@ function add(){
         }
     ]).then(function(res){
         switch(res.add) {
-            case "Department": addDepartment();
-            break;
-            case "Employee Role": addEmpolyeeRole();
-            break;
-            case "Employee": addEmployee();
-            default: console.log("default");
+            case "Department": 
+                addDepartment();
+                break;
+            case "Employee Role": 
+                addEmpolyeeRole();
+                break;
+            case "Employee": 
+                addEmployee();
+                break;
+            default: 
+                console.log("default");
         }
     });
 }

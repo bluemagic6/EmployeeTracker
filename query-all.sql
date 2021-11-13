@@ -7,7 +7,7 @@ SELECT
     m.last_name AS Manager, 
     d.name AS department
 
-    FROM employee employee
+    FROM employee e
     LEFT join employee m
                 ON e.manager_id = m.id
     
