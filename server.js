@@ -135,3 +135,23 @@ function viewByRole(){
         })
     })
 }
+
+function add(){
+    inquirer.prompt([
+        {
+            type: "list",
+            name: "add",
+            message: "What would you like to add?",
+            choices: ["Department", "Employee Role", "Employee"]
+        }
+    ]).then(function(res){
+        switch(res.add) {
+            case "Department": addDepartment();
+            break;
+            case "Employee Role": addEmpolyeeRole();
+            break;
+            case "Employee": addEmployee();
+            default: console.log("default");
+        }
+    });
+}
